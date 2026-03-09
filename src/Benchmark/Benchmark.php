@@ -101,10 +101,14 @@ final class Benchmark
         echo "Running test $testSuiteNumber.$testCaseNumber: $containerName";
 
         $this->context->clear();
-        for ($run = 0; $run < 30; $run++) {
+        for ($run = 0; $run <= 30; $run++) {
             $container = $containerDefinition->getName();
 
             $output = $this->context->getTestOutput($testSuiteNumber, $testCaseNumber, $container);
+            if (!$run) {
+                //skip first result
+                continue;
+            }
             $result = TestResult::createFromJson($output);
             $benchmarkResult->addTestResult($testSuite, $testCase, $containerDefinition, $result);
 

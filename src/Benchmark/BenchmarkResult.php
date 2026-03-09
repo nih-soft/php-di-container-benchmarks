@@ -10,8 +10,8 @@ use DiContainerBenchmarks\Test\TestResult;
 use DiContainerBenchmarks\TestSuite\TestSuiteInterface;
 use InvalidArgumentException;
 
-use function assert;
 use function count;
+use function intdiv;
 use function round;
 use function sort;
 use function uasort;
@@ -103,22 +103,26 @@ final class BenchmarkResult
      */
     private function getMedian(array $results, int $precision = 5): ?float
     {
-        if ($results === [] || $results[0] === null) {
+        if ($results === []) {
             return null;
+        }
+
+        foreach ($results as $result) {
+            if ($result === null) {
+                return null;
+            }
         }
 
         sort($results, SORT_NUMERIC);
 
         $count = count($results);
-        $middleIndex = $count / 2;
-
-        assert($results[$middleIndex] !== null);
-        assert($results[$middleIndex + 1] !== null);
 
         if ($count % 2 === 0) {
-            $median = ($results[$middleIndex] + $results[$middleIndex + 1]) / 2;
+            $upperMiddleIndex = intdiv($count, 2);
+            $lowerMiddleIndex = $upperMiddleIndex - 1;
+            $median = ($results[$lowerMiddleIndex] + $results[$upperMiddleIndex]) / 2;
         } else {
-            $median = $results[$middleIndex];
+            $median = $results[intdiv($count, 2)];
         }
 
         return round($median, $precision);

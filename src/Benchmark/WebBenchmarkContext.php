@@ -31,6 +31,7 @@ final class WebBenchmarkContext implements BenchmarkContextInterface
             $this->benchmarkUrl . "?clear=1"
         );
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_exec($ch);
         curl_close($ch);
     }
 

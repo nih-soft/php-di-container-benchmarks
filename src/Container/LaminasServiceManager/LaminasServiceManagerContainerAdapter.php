@@ -2105,7 +2105,7 @@ use DiContainerBenchmarks\Fixture\C\FixtureC996;
 use DiContainerBenchmarks\Fixture\C\FixtureC997;
 use DiContainerBenchmarks\Fixture\C\FixtureC998;
 use DiContainerBenchmarks\Fixture\C\FixtureC999;
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use Laminas\ServiceManager\ServiceManager;
 

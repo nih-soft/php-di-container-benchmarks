@@ -10,8 +10,12 @@ use DiContainerBenchmarks\Container\Dice\DiceContainerDefinition;
 use DiContainerBenchmarks\Container\Joomla\JoomlaContainerDefinition;
 use DiContainerBenchmarks\Container\LaminasServiceManager\LaminasServiceManagerContainerDefinition;
 use DiContainerBenchmarks\Container\Laravel\LaravelContainerDefinition;
+use DiContainerBenchmarks\Container\Nette\NetteContainerDefinition;
+use DiContainerBenchmarks\Container\Nih\NihContainerDefinition;
+use DiContainerBenchmarks\Container\Nih\NihManualContainerDefinition;
 use DiContainerBenchmarks\Container\PhpDi\PhpDiContainerDefinition;
 use DiContainerBenchmarks\Container\Symfony\SymfonyContainerDefinition;
+use DiContainerBenchmarks\Container\YiisoftDi\YiisoftDiContainerDefinition;
 use DiContainerBenchmarks\Container\Yii2\Yii2ContainerDefinition;
 use DiContainerBenchmarks\Container\Zen\ZenContainerDefinition;
 
@@ -23,16 +27,20 @@ final class ContainerDefinitions
     public static function getAllContainerDefinitions(): array
     {
         return [
+            new NihContainerDefinition(),
+            new NihManualContainerDefinition(),
+            new YiisoftDiContainerDefinition(),
+            new Yii2ContainerDefinition(),
+            new SymfonyContainerDefinition(),
+            new ZenContainerDefinition(),
             new AuraContainerDefinition(),
             new ChubbyphpContainerDefinition(),
             new DiceContainerDefinition(),
             new JoomlaContainerDefinition(),
             new LaminasServiceManagerContainerDefinition(),
             new LaravelContainerDefinition(),
+            new NetteContainerDefinition(),
             new PhpDiContainerDefinition(),
-            new SymfonyContainerDefinition(),
-            new Yii2ContainerDefinition(),
-            new ZenContainerDefinition(),
         ];
     }
 

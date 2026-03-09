@@ -9,12 +9,12 @@ use Psr\Container\ContainerInterface;
 
 final class DecoratedDice extends Dice implements ContainerInterface
 {
-    public function has($id)
+    public function has(string $id): bool
     {
         return true;
     }
 
-    public function get($id)
+    public function get(string $id): mixed
     {
         return $this->create($id);
     }
